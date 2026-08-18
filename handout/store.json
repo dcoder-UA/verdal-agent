@@ -1,0 +1,673 @@
+{
+  "shop": "Verdal",
+  "currency": "EUR",
+  "products": [
+    {
+      "id": "p-001",
+      "title": "Merino Wool Sweater",
+      "price": 89.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S / navy",
+          "stock": 4
+        },
+        {
+          "variant": "M / navy",
+          "stock": 0
+        },
+        {
+          "variant": "L / navy",
+          "stock": 7
+        },
+        {
+          "variant": "M / beige",
+          "stock": 12
+        },
+        {
+          "variant": "L / beige",
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "p-002",
+      "title": "Alpine Shell Jacket",
+      "price": 249.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S / black",
+          "stock": 2
+        },
+        {
+          "variant": "M / black",
+          "stock": 9
+        },
+        {
+          "variant": "L / black",
+          "stock": 0
+        },
+        {
+          "variant": "M / olive",
+          "stock": 5
+        }
+      ]
+    },
+    {
+      "id": "p-003",
+      "title": "Trail Runner Shoes",
+      "price": 129.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "40 / grey",
+          "stock": 6
+        },
+        {
+          "variant": "41 / grey",
+          "stock": 0
+        },
+        {
+          "variant": "42 / grey",
+          "stock": 3
+        },
+        {
+          "variant": "43 / grey",
+          "stock": 11
+        }
+      ]
+    },
+    {
+      "id": "p-004",
+      "title": "Down Vest",
+      "price": 159.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S / navy",
+          "stock": 0
+        },
+        {
+          "variant": "M / navy",
+          "stock": 8
+        },
+        {
+          "variant": "L / navy",
+          "stock": 4
+        }
+      ]
+    },
+    {
+      "id": "p-005",
+      "title": "Hiking Backpack 35L",
+      "price": 119.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one / black",
+          "stock": 15
+        },
+        {
+          "variant": "one / red",
+          "stock": 2
+        }
+      ]
+    },
+    {
+      "id": "p-006",
+      "title": "Thermal Base Layer",
+      "price": 49.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S / black",
+          "stock": 20
+        },
+        {
+          "variant": "M / black",
+          "stock": 14
+        },
+        {
+          "variant": "L / black",
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "p-007",
+      "title": "Wool Socks 3-pack",
+      "price": 29.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "39-42",
+          "stock": 30
+        },
+        {
+          "variant": "43-46",
+          "stock": 18
+        }
+      ]
+    },
+    {
+      "id": "p-008",
+      "title": "Rain Pants",
+      "price": 99.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S",
+          "stock": 5
+        },
+        {
+          "variant": "M",
+          "stock": 0
+        },
+        {
+          "variant": "L",
+          "stock": 6
+        }
+      ]
+    },
+    {
+      "id": "p-009",
+      "title": "Fleece Hoodie",
+      "price": 79.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S / grey",
+          "stock": 9
+        },
+        {
+          "variant": "M / grey",
+          "stock": 11
+        },
+        {
+          "variant": "L / grey",
+          "stock": 3
+        },
+        {
+          "variant": "M / rust",
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "p-010",
+      "title": "Insulated Gloves",
+      "price": 45.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S",
+          "stock": 7
+        },
+        {
+          "variant": "M",
+          "stock": 12
+        },
+        {
+          "variant": "L",
+          "stock": 0
+        }
+      ]
+    },
+    {
+      "id": "p-011",
+      "title": "Merino Beanie",
+      "price": 25.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one / navy",
+          "stock": 40
+        },
+        {
+          "variant": "one / rust",
+          "stock": 22
+        }
+      ]
+    },
+    {
+      "id": "p-012",
+      "title": "Trekking Poles",
+      "price": 69.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one",
+          "stock": 8
+        }
+      ]
+    },
+    {
+      "id": "p-013",
+      "title": "Insulated Bottle 1L",
+      "price": 22.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one / steel",
+          "stock": 50
+        }
+      ]
+    },
+    {
+      "id": "p-014",
+      "title": "Softshell Jacket",
+      "price": 179.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S",
+          "stock": 3
+        },
+        {
+          "variant": "M",
+          "stock": 0
+        },
+        {
+          "variant": "L",
+          "stock": 5
+        }
+      ]
+    },
+    {
+      "id": "p-015",
+      "title": "Convertible Trousers",
+      "price": 89.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "30",
+          "stock": 4
+        },
+        {
+          "variant": "32",
+          "stock": 9
+        },
+        {
+          "variant": "34",
+          "stock": 0
+        },
+        {
+          "variant": "36",
+          "stock": 6
+        }
+      ]
+    },
+    {
+      "id": "p-016",
+      "title": "Sun Hat",
+      "price": 35.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one",
+          "stock": 12
+        }
+      ]
+    },
+    {
+      "id": "p-017",
+      "title": "Merino Long Sleeve",
+      "price": 69.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "S",
+          "stock": 8
+        },
+        {
+          "variant": "M",
+          "stock": 0
+        },
+        {
+          "variant": "L",
+          "stock": 5
+        }
+      ]
+    },
+    {
+      "id": "p-018",
+      "title": "Camp Blanket",
+      "price": 55.0,
+      "currency": "EUR",
+      "variants": [
+        {
+          "variant": "one",
+          "stock": 9
+        }
+      ]
+    }
+  ],
+  "orders": [
+    {
+      "name": "#1001",
+      "status": "delivered",
+      "tracking": "DHL-8812340",
+      "placed_at": "2026-07-28",
+      "ships_to": "DE",
+      "items": [
+        {
+          "product_id": "p-011",
+          "title": "Merino Beanie",
+          "variant": "one / navy",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1002",
+      "status": "shipped",
+      "tracking": "DHL-4471829",
+      "placed_at": "2026-08-04",
+      "ships_to": "FR",
+      "items": [
+        {
+          "product_id": "p-001",
+          "title": "Merino Wool Sweater",
+          "variant": "L / navy",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1003",
+      "status": "processing",
+      "tracking": null,
+      "placed_at": "2026-08-11",
+      "ships_to": "ES",
+      "items": [
+        {
+          "product_id": "p-003",
+          "title": "Trail Runner Shoes",
+          "variant": "42 / grey",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1004",
+      "status": "delivered",
+      "tracking": "DHL-9930211",
+      "placed_at": "2026-07-14",
+      "ships_to": "PL",
+      "items": [
+        {
+          "product_id": "p-005",
+          "title": "Hiking Backpack 35L",
+          "variant": "one / black",
+          "qty": 1
+        },
+        {
+          "product_id": "p-013",
+          "title": "Insulated Bottle 1L",
+          "variant": "one / steel",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "name": "#1005",
+      "status": "cancelled",
+      "tracking": null,
+      "placed_at": "2026-08-02",
+      "ships_to": "IT",
+      "items": [
+        {
+          "product_id": "p-002",
+          "title": "Alpine Shell Jacket",
+          "variant": "M / black",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1006",
+      "status": "shipped",
+      "tracking": "DHL-5567013",
+      "placed_at": "2026-08-08",
+      "ships_to": "DE",
+      "items": [
+        {
+          "product_id": "p-009",
+          "title": "Fleece Hoodie",
+          "variant": "M / grey",
+          "qty": 2
+        }
+      ]
+    },
+    {
+      "name": "#1007",
+      "status": "delivered",
+      "tracking": "DHL-2201947",
+      "placed_at": "2026-06-30",
+      "ships_to": "NL",
+      "items": [
+        {
+          "product_id": "p-007",
+          "title": "Wool Socks 3-pack",
+          "variant": "39-42",
+          "qty": 3
+        }
+      ]
+    },
+    {
+      "name": "#1008",
+      "status": "processing",
+      "tracking": null,
+      "placed_at": "2026-08-12",
+      "ships_to": "AT",
+      "items": [
+        {
+          "product_id": "p-014",
+          "title": "Softshell Jacket",
+          "variant": "L",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1009",
+      "status": "shipped",
+      "tracking": "DHL-7743298",
+      "placed_at": "2026-08-09",
+      "ships_to": "SE",
+      "items": [
+        {
+          "product_id": "p-006",
+          "title": "Thermal Base Layer",
+          "variant": "M / black",
+          "qty": 1
+        },
+        {
+          "product_id": "p-010",
+          "title": "Insulated Gloves",
+          "variant": "M",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1010",
+      "status": "delivered",
+      "tracking": "DHL-6612880",
+      "placed_at": "2026-07-05",
+      "ships_to": "FR",
+      "items": [
+        {
+          "product_id": "p-004",
+          "title": "Down Vest",
+          "variant": "M / navy",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1011",
+      "status": "processing",
+      "tracking": null,
+      "placed_at": "2026-08-12",
+      "ships_to": "DE",
+      "items": [
+        {
+          "product_id": "p-018",
+          "title": "Camp Blanket",
+          "variant": "one",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1012",
+      "status": "shipped",
+      "tracking": "DHL-3390155",
+      "placed_at": "2026-08-06",
+      "ships_to": "ES",
+      "items": [
+        {
+          "product_id": "p-015",
+          "title": "Convertible Trousers",
+          "variant": "32",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1013",
+      "status": "delivered",
+      "tracking": "DHL-1128374",
+      "placed_at": "2026-07-19",
+      "ships_to": "CZ",
+      "items": [
+        {
+          "product_id": "p-012",
+          "title": "Trekking Poles",
+          "variant": "one",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1014",
+      "status": "cancelled",
+      "tracking": null,
+      "placed_at": "2026-07-30",
+      "ships_to": "PT",
+      "items": [
+        {
+          "product_id": "p-003",
+          "title": "Trail Runner Shoes",
+          "variant": "43 / grey",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1015",
+      "status": "shipped",
+      "tracking": "DHL-8845621",
+      "placed_at": "2026-08-10",
+      "ships_to": "GR",
+      "items": [
+        {
+          "product_id": "p-016",
+          "title": "Sun Hat",
+          "variant": "one",
+          "qty": 1
+        },
+        {
+          "product_id": "p-011",
+          "title": "Merino Beanie",
+          "variant": "one / rust",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1016",
+      "status": "delivered",
+      "tracking": "DHL-4409972",
+      "placed_at": "2026-06-22",
+      "ships_to": "DE",
+      "items": [
+        {
+          "product_id": "p-008",
+          "title": "Rain Pants",
+          "variant": "L",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1017",
+      "status": "processing",
+      "tracking": null,
+      "placed_at": "2026-08-13",
+      "ships_to": "FI",
+      "items": [
+        {
+          "product_id": "p-017",
+          "title": "Merino Long Sleeve",
+          "variant": "S",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1018",
+      "status": "shipped",
+      "tracking": "DHL-7712045",
+      "placed_at": "2026-08-07",
+      "ships_to": "BE",
+      "items": [
+        {
+          "product_id": "p-001",
+          "title": "Merino Wool Sweater",
+          "variant": "M / beige",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1019",
+      "status": "delivered",
+      "tracking": "DHL-9987331",
+      "placed_at": "2026-07-11",
+      "ships_to": "IE",
+      "items": [
+        {
+          "product_id": "p-005",
+          "title": "Hiking Backpack 35L",
+          "variant": "one / red",
+          "qty": 1
+        }
+      ]
+    },
+    {
+      "name": "#1020",
+      "status": "processing",
+      "tracking": null,
+      "placed_at": "2026-08-13",
+      "ships_to": "DK",
+      "items": [
+        {
+          "product_id": "p-002",
+          "title": "Alpine Shell Jacket",
+          "variant": "M / olive",
+          "qty": 1
+        }
+      ]
+    }
+  ],
+  "policies": {
+    "returns": "Return window is 14 days from the day the parcel is delivered. Items must be unworn, unwashed and with original tags attached. Return shipping is paid by the customer, except for faulty or incorrectly sent items, where we cover it. Refunds are issued to the original payment method within 5 business days of the parcel reaching our warehouse.",
+    "exchange": "One free size exchange per order within 14 days of delivery, provided the requested size is in stock. We send the replacement as soon as the original item is scanned by the carrier. Colour exchanges are treated as a return plus a new order.",
+    "shipping": "Standard delivery across the EU takes 3-5 business days and costs EUR 12. Orders over EUR 150 ship free. Express delivery takes 1-2 business days and costs EUR 29. We do not ship outside the European Union. Orders placed after 15:00 CET are dispatched the next business day.",
+    "damaged": "Report damage or a manufacturing fault within 48 hours of delivery with a photo. We cover return shipping and send a replacement, or refund in full if the item is out of stock.",
+    "payment": "We accept Visa, Mastercard, Apple Pay, Google Pay and PayPal. Cards are charged when the order is dispatched, not when it is placed. We do not offer cash on delivery."
+  }
+}
