@@ -32,7 +32,8 @@ sys.path.insert(0, str(ROOT))
 from resolver.answer import Answerer          # noqa: E402
 from resolver.resolve import load             # noqa: E402
 
-MARK = {"answer": "шаблон", "abstain": "отказ", "model": "МОДЕЛЬ",
+MARK = {"answer": "шаблон", "abstain": "отказ", "handoff": "ОПЕРАТОР",
+        "model": "МОДЕЛЬ",
         "timeout": "НЕ УСПЕЛА", "unknown": "?"}
 
 
@@ -41,7 +42,7 @@ def main() -> int:
     ap.add_argument("--q", dest="src", default="handout/questions.jsonl")
     ap.add_argument("--r", dest="res", default="results.jsonl")
     ap.add_argument("--path", action="append", default=[],
-                    help="answer / abstain / model / timeout; можно повторять")
+                    help="answer / abstain / handoff / model / timeout; можно повторять")
     ap.add_argument("--slow", type=float, default=None,
                     help="показать только медленнее N мс")
     ap.add_argument("--limit", type=int, default=0)

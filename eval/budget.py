@@ -157,7 +157,8 @@ def main() -> int:
         if path == "timeout" and model is not None:
             model.reconnect()
 
-    fast = [x for p in ("answer", "abstain") for x in by_path.get(p, [])]
+    # handoff — тоже быстрый путь: решение принимает резолвер, сети нет.
+    fast = [x for p in ("answer", "abstain", "handoff") for x in by_path.get(p, [])]
     slow = [x for p in ("model", "timeout", "no_model") for x in by_path.get(p, [])]
 
     print("# Бюджет задержки по компонентам\n")

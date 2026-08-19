@@ -28,7 +28,7 @@ from dataclasses import dataclass
 
 from .normalize import normalize
 from .geo import destination
-from .resolve import Resolution
+from .resolve import Resolution, HANDOFF_INTENTS
 
 CYRILLIC = re.compile(r"[а-яіїєґё]")
 
@@ -68,7 +68,7 @@ STATUS = {
 
 @dataclass
 class Reply:
-    decision: str      # answer | abstain | escalate
+    decision: str      # answer | abstain | handoff | escalate
     text: str = ""
     why: str = ""      # служебное, покупателю не показываем
 
@@ -100,6 +100,13 @@ class Answerer:
 
         if i == "unknown":
             return Reply("escalate", why="намерение не опознано")
+
+        # Передача человеку. Проверяется РАНЬШЕ правила покрытия: в таких
+        # вопросах непонятое слово — обычно сам глагол («скасувати»,
+        # «змініть»), и требовать полного разбора значило бы отдавать наверх
+        # ровно то, что мы уже опознали. Ответ 0 мс, модель не вызывается.
+        if i in HANDOFF_INTENTS:
+            return Reply("handoff", why=i)   # текст ставится в reply(), там язык
 
         # Дефолт означает «ни одно правило не сработало». Единственное
         # исключение — статус заказа: там основанием служит найденный номер,
@@ -153,8 +160,11 @@ class Answerer:
     def reply(self, res: Resolution, q: str) -> Reply:
         stop = self.gate(res)
         if stop is not None:
-            if stop.decision == "abstain" and not stop.text:
-                stop.text = self._no_data(_lang(q))
+            if not stop.text:
+                if stop.decision == "abstain":
+                    stop.text = self._no_data(_lang(q))
+                elif stop.decision == "handoff":
+                    stop.text = self._handoff(stop.why, _lang(q))
             return stop
 
         lang, norm = _lang(q), normalize(q)
@@ -164,6 +174,22 @@ class Answerer:
         return handler(res, lang, norm)
 
     # --- служебные тексты ----------------------------------------------
+
+    def _handoff(self, intent: str, lang: str) -> str:
+        """
+        Тексты разные по существу. «Це може зробити тільки оператор» — про
+        невозможность выполнить просьбу самим; на жалобу или просьбу
+        перезвонить так отвечать грубо, там человек нужен не вместо действия,
+        а по самой просьбе.
+        """
+        if intent == "handoff_change":
+            return ("Змінити замовлення може тільки оператор. "
+                    "З'єднати вас із ним?"
+                    if lang == "ua" else
+                    "Only an agent can change an order. Shall I connect you?")
+        return ("Зараз з'єднаю вас з оператором."
+                if lang == "ua" else
+                "Let me connect you to an agent.")
 
     def _no_data(self, lang: str) -> str:
         """Данных нет в магазине. Это ПРАВИЛЬНЫЙ ответ, а не сбой."""

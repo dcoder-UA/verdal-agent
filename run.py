@@ -370,7 +370,8 @@ def main() -> int:
     p95 = pct(times, 0.95)
     print(f"\nвопросов {n} → {dst}")
     print(f"  шаблон      {c['answer']:4}   обоснованный отказ {c['abstain']:4}")
-    print(f"  модель      {c['model']:4}   не встигли         {c['timeout']:4}"
+    print(f"  оператор    {c['handoff']:4}   модель             {c['model']:4}")
+    print(f"  не встигли  {c['timeout']:4}"
           + (f"   без модели {c['no_model']}" if c["no_model"] else ""))
     if model is not None and model.throttled:
         print(f"  ⚠ 429 от провайдера: {model.throttled} — ключ не на том тарифе")

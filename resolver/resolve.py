@@ -157,6 +157,64 @@ ORDER_RULES: list[tuple[str, tuple[str, ...]]] = [
 ]
 
 
+# --- передача человеку -------------------------------------------------
+#
+# Четвёртый исход рядом с «ответили / отказали / отдали модели». Основание
+# у двух подклассов РАЗНОЕ, и это важнее самих списков.
+#
+# `handoff_change` — просьба ИЗМЕНИТЬ данные: отменить, переоформить,
+# сменить адрес или размер в конкретном заказе. Этот подкласс замкнут
+# свойством системы, а не перечнем слов: данные у нас только на чтение,
+# поэтому просьба поменять запись не может быть выполнена НИКОГДА —
+# ни моделью, ни шаблоном. Отдавать её наверх прямо вредно: замер показал,
+# что на «Хочу скасувати замовлення #1002» модель отвечает «Замовлення вже
+# відправлено, тому скасувати його неможливо» — политики отмены в store.json
+# нет вовсе, то есть правило выдумано целиком.
+#
+# `handoff_human` — просьба позвать человека: жалоба, счёт на компанию,
+# перезвон. Здесь это честное перечисление, и оно неполно по устройству.
+# Но промах безопасен: не опознали — вопрос уходит наверх, как уходил
+# до этой правки. Замер: «Передзвоніть мені» → «Ми не надаємо послуги
+# телефонного зв'язку», и это ответ агента компании, которая строит
+# голосовой слой.
+#
+# Границу с политиками НЕ трогаем: «Чи можна поміняти розмір?» — вопрос
+# о правилах магазина, на него есть чем ответить. Разделяет их не глагол,
+# а наличие НОМЕРА заказа: просьба к конкретной записи — изменение,
+# вопрос без записи — политика. Поэтому глаголы смены живут отдельным
+# списком и срабатывают только вместе с номером.
+HANDOFF_ALWAYS: list[tuple[str, tuple[str, ...]]] = [
+    # Отмена. Отдельно от глаголов смены: политики отмены в магазине нет,
+    # поэтому и «Чи можна скасувати замовлення?» отвечать нечем — вопрос
+    # о правиле, которого не существует, это тоже повод позвать человека.
+    ("handoff_change",  ("скасу", "відміни", "отмени", "анулю",
+                         "cancel", "annul")),
+    # Позвать человека.
+    ("handoff_human",   ("оператор", "менеджер", "жив людин", "живою людин",
+                         "з людиною", "людиною", "передзвон", "перезвон",
+                         "зателефонуйте", "подзвоніть", "скарг", "рекламаці",
+                         "рахунок на компанію", "рахунок-фактур",
+                         "operator", "manager", "human", "complaint",
+                         "call me", "call back", "callback", "invoice")),
+]
+
+# Глаголы смены. Срабатывают ТОЛЬКО при найденном номере заказа — иначе
+# «поміня»/«заміни» перехватили бы политику обмена, а «змінит» — вопросы
+# о том, что вообще можно изменить.
+#
+# Ключа «оформ» здесь СОЗНАТЕЛЬНО НЕТ, хотя оформление заказа — тоже запись.
+# Он ломает «Як оформити повернення?»: это вопрос о процедуре возврата,
+# на него в магазине есть политика, и уводить его к оператору — потеря.
+# Один класс, пойманный ценой другого, — не выигрыш.
+HANDOFF_ON_ORDER: list[tuple[str, tuple[str, ...]]] = [
+    ("handoff_change",  ("змінит", "зміні", "зміню", "поміня", "заміни",
+                         "переоформ", "перенес", "додайте", "приберіть",
+                         "change", "update", "edit", "amend", "reschedule")),
+]
+
+HANDOFF_INTENTS = ("handoff_change", "handoff_human")
+
+
 def _pattern(kw: str) -> re.Pattern:
     """
     Ключ → шаблон. Обычный ключ — это ОСНОВА слова и ищется от начала слова:
@@ -171,8 +229,14 @@ def _pattern(kw: str) -> re.Pattern:
     return re.compile(r"\b" + re.escape(kw))
 
 
-INTENT_PATTERNS = [(n, tuple(_pattern(k) for k in kws)) for n, kws in INTENT_RULES]
-ORDER_PATTERNS = [(n, tuple(_pattern(k) for k in kws)) for n, kws in ORDER_RULES]
+def _compile(rules):
+    return [(n, tuple(_pattern(k) for k in kws)) for n, kws in rules]
+
+
+INTENT_PATTERNS = _compile(INTENT_RULES)
+ORDER_PATTERNS = _compile(ORDER_RULES)
+HANDOFF_ALWAYS_PATTERNS = _compile(HANDOFF_ALWAYS)
+HANDOFF_ON_ORDER_PATTERNS = _compile(HANDOFF_ON_ORDER)
 
 
 @dataclass
@@ -405,14 +469,22 @@ class Resolver:
         не знак вопроса, а сам найденный номер.
         """
         norm = normalize(q)
-        patterns = ORDER_PATTERNS if has_order else INTENT_PATTERNS
+        # Передача человеку идёт ПЕРВОЙ. Иначе «Поміняйте адресу доставки
+        # в #1003» перехватывается правилом `order_address` и получает шаблон,
+        # который сообщает текущий адрес в ответ на просьбу его сменить —
+        # худшее место всего быстрого пути.
+        handoff = HANDOFF_ALWAYS_PATTERNS + (
+            HANDOFF_ON_ORDER_PATTERNS if has_order else [])
+        handoff_rules = HANDOFF_ALWAYS + (HANDOFF_ON_ORDER if has_order else [])
+
+        patterns = handoff + (ORDER_PATTERNS if has_order else INTENT_PATTERNS)
 
         for name, pats in patterns:
             if any(p.search(norm) for p in pats):
                 return name, "exact"
 
         stems = self._stems(q)
-        rules = ORDER_RULES if has_order else INTENT_RULES
+        rules = handoff_rules + (ORDER_RULES if has_order else INTENT_RULES)
         for name, kws in rules:
             if any(self._fuzzy_hit(k, stems) for k in kws):
                 return name, "fuzzy"
@@ -554,6 +626,14 @@ class Resolver:
         res.intent, res.intent_src = self._intent(q, has_order=bool(m))
 
         res.unexplained = self._unexplained(q)
+
+        # Передача человеку не зависит ни от товара, ни от политики: решение
+        # уже принято словом. Номер заказа сохраняем — оператору он нужен.
+        if res.intent in HANDOFF_INTENTS:
+            if m and order_no in self.orders:
+                res.order = order_no
+            res.reason = "нужен оператор"
+            return res
 
         if m:
             if order_no in self.orders:
